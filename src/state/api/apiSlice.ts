@@ -21,4 +21,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetCoursesQuery } = apiSlice;
+export const { useGetCoursesQuery, useGetCourseByIdQuery } = apiSlice;
