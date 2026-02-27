@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <div>
       <DashboardWrapper>
-        <div>{children}</div>
+        <div className="overflow-hidden">{children}</div>
       </DashboardWrapper>
     </div>
   );
