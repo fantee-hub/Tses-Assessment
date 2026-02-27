@@ -11,3 +11,5 @@ export * from "./messageIcon";
 export * from "./notificationIcon";
 export * from "./scholarIcon";
 export * from "./settingsIcon";
+export * from "./userGroupIcon";
+export * from "./messageTextIcon";

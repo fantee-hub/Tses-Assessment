@@ -84,7 +84,7 @@ const CourseManagement = () => {
   };
 
   return (
-    <div className="flex-1  w-full text-black  bg-gray-50/50">
+    <div className="flex-1  w-full text-black  ">
       <HeaderSection />
 
       {/* Stats Section */}

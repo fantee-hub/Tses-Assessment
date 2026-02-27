@@ -17,7 +17,7 @@ export function DashboardWrapper({ children }: { children: React.ReactNode }) {
           isSideBarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <main>{children}</main>
+        <main className="pt-20 md:ml-51 bg-gray-50/50">{children}</main>
       </div>
     </div>
   );
