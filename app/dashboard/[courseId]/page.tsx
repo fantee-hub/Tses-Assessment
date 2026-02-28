@@ -1,6 +1,6 @@
 "use client";
 import { useMemo } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import {
   useGetCourseByIdQuery,
@@ -15,6 +15,7 @@ import { LearnersTable } from "@/src/screens/CourseDetail/sections/LearnersTable
 const CourseDetailPage = () => {
   const params = useParams();
   const courseId = params?.courseId as string;
+  const router = useRouter();
 
   const { data: course, isLoading: courseLoading } = useGetCourseByIdQuery(
     courseId,
@@ -71,7 +72,9 @@ const CourseDetailPage = () => {
       <CourseDetailHeader
         title={course.title}
         tag={course.tag}
-        onStartLearning={() => {}}
+        onStartLearning={() => {
+          router.push(`/dashboard/${course.id}/learn`);
+        }}
       />
 
       {/* Hero banner */}
