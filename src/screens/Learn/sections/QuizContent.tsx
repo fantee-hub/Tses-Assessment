@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, XCircle } from "lucide-react";
+import { XCircle } from "lucide-react";
 import { Question } from "@/src/utils/types";
 import { useDispatch } from "react-redux";
 import { saveQuizResult } from "@/src/state/slices/learnSlice";
@@ -126,81 +126,79 @@ export default function QuizContent({
       <div className="p-5 border-b-[1.5px] text-sm border-[#D9D9D9]">
         <h2 className="font-semibold text-[#202020]">Quiz</h2>
       </div>
+
       {questions.map((question, index) => (
-        <div key={question.id} className=" pt-5 px-5">
-          <div className="flex items-start gap-4 border border-[#E8E8E8] rounded-[14px] p-3">
-            <div className="shrink-0 w-8 h-8 rounded-[10px] bg-[#0A60E1] text-white font-semibold flex items-center justify-center text-lg">
-              {index + 1}
-            </div>
-            <div className="flex-1">
-              <h3 className="text-sm font-medium text-[#202020] mb-2">
-                {question.text}
-              </h3>
-
-              <div className="flex items-center gap-2 mb-4">
-                <span className="flex items-center px-2 py-0.5 rounded-lg text-xs font-medium border border-[#E8E8E8]">
-                  {question.type === "multiple_choice"
-                    ? "Multiple Choice"
-                    : "Short Answer"}
-                </span>
-                <span className="flex items-center text-xs text-[#636363] gap-1">
-                  <AwardIcon />
-                  {question.points} points
-                </span>
+        <div key={question.id} className="pt-5 px-5">
+          <div className="border border-[#E8E8E8] rounded-[14px] p-3">
+            <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-4 mb-4">
+              <div className="shrink-0 w-8 h-8 rounded-[10px] bg-[#0A60E1] text-white font-semibold flex items-center justify-center text-lg">
+                {index + 1}
               </div>
-
-              {question.type === "multiple_choice" && question.options ? (
-                <div className="space-y-3">
-                  {question.options.map((opt, i) => {
-                    const letter = String.fromCharCode(65 + i);
-                    const isSelected = answers[question.id] === letter;
-                    return (
-                      <label
-                        key={letter}
-                        className={`flex items-center gap-3 p-2.25 rounded-[10px] border border-[#E8E8E8]  cursor-pointer transition-colors ${
-                          submitted
-                            ? isSelected
-                              ? "bg-[#EAF3FF]"
-                              : "opacity-70 hover:bg-blue-50"
-                            : ""
-                        } ${
-                          isSelected
-                            ? "bg-[#EAF3FF] text-[#0A60E1] hover:bg-[#EAF3FF]"
-                            : "bg-[#FDFDFD] hover:bg-gray-50"
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name={question.id}
-                          value={letter}
-                          checked={isSelected}
-                          onChange={() =>
-                            handleChoiceChange(question.id, letter)
-                          }
-                          disabled={submitted}
-                          className="h-5 w-5 text-blue-600 hidden"
-                        />
-                        <span className="text-[#636363] text-xs">
-                          {letter}. {opt}
-                        </span>
-                      </label>
-                    );
-                  })}
+              <div className="flex-1">
+                <h3 className="text-sm font-medium text-[#202020] mb-2">
+                  {question.text}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <span className="flex items-center px-2 py-0.5 rounded-lg text-xs font-medium border border-[#E8E8E8]">
+                    {question.type === "multiple_choice"
+                      ? "Multiple Choice"
+                      : "Short Answer"}
+                  </span>
+                  <span className="flex items-center text-xs text-[#636363] gap-1">
+                    <AwardIcon />
+                    {question.points} points
+                  </span>
                 </div>
-              ) : (
-                <textarea
-                  value={answers[question.id] || ""}
-                  onChange={(e) =>
-                    handleTextChange(question.id, e.target.value)
-                  }
-                  disabled={submitted}
-                  placeholder="Enter your answer here..."
-                  className="w-full h-19 p-4 border border-[#E8E8E8] rounded-[10px] text-sm resize-none disabled:bg-gray-50 disabled:opacity-70"
-                />
-              )}
-
-              {submitted && getQuestionFeedback(question)}
+              </div>
             </div>
+
+            {question.type === "multiple_choice" && question.options ? (
+              <div className="space-y-3">
+                {question.options.map((opt, i) => {
+                  const letter = String.fromCharCode(65 + i);
+                  const isSelected = answers[question.id] === letter;
+                  return (
+                    <label
+                      key={letter}
+                      className={`flex items-center gap-3 p-2.5 rounded-[10px] border border-[#E8E8E8] cursor-pointer transition-colors ${
+                        submitted
+                          ? isSelected
+                            ? "bg-[#EAF3FF]"
+                            : "opacity-70 hover:bg-blue-50"
+                          : ""
+                      } ${
+                        isSelected
+                          ? "bg-[#EAF3FF] text-[#0A60E1] hover:bg-[#EAF3FF]"
+                          : "bg-[#FDFDFD] hover:bg-gray-50"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name={question.id}
+                        value={letter}
+                        checked={isSelected}
+                        onChange={() => handleChoiceChange(question.id, letter)}
+                        disabled={submitted}
+                        className="h-5 w-5 text-blue-600 hidden"
+                      />
+                      <span className="text-[#636363] text-xs">
+                        {letter}. {opt}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            ) : (
+              <textarea
+                value={answers[question.id] || ""}
+                onChange={(e) => handleTextChange(question.id, e.target.value)}
+                disabled={submitted}
+                placeholder="Enter your answer here..."
+                className="w-full h-19 p-4 border border-[#E8E8E8] rounded-[10px] text-sm resize-none disabled:bg-gray-50 disabled:opacity-70"
+              />
+            )}
+
+            {submitted && getQuestionFeedback(question)}
           </div>
         </div>
       ))}
@@ -210,9 +208,9 @@ export default function QuizContent({
           <button
             onClick={handleSubmit}
             disabled={Object.keys(answers).length === 0}
-            className="w-57 h-12 flex items-center justify-center  cursor-pointer
-                     bg-white border border-[#0063EF] 
-                     text-[#0063EF] font-medium rounded-lg 
+            className="w-57 h-12 flex items-center justify-center cursor-pointer
+                     bg-white border border-[#0063EF]
+                     text-[#0063EF] font-medium rounded-lg
                      hover:bg-[#0063EF] hover:text-white
                      disabled:bg-gray-50 disabled:text-gray-400 disabled:border-gray-300
                      disabled:cursor-not-allowed

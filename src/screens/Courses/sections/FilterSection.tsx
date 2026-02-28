@@ -100,7 +100,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </button>
 
           <div
-            className={`absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden transition-all duration-200 origin-top min-w-40 ${
+            className={`absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden transition-all duration-200 origin-top md:min-w-40 ${
               isDateOpen
                 ? "opacity-100 scale-y-100 visible"
                 : "opacity-0 scale-y-0 invisible"
@@ -110,7 +110,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
               <button
                 key={range.value}
                 onClick={() => handleDateSelect(range.value)}
-                className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors text-sm ${
+                className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors md:text-sm text-xs ${
                   selectedDateRange === range.value
                     ? "bg-blue-50 text-blue-600 font-medium"
                     : "text-[#636363]"
@@ -147,7 +147,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           >
             <button
               onClick={() => handleCategorySelect("")}
-              className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors text-sm ${
+              className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors md:text-sm text-xs ${
                 selectedCategory === ""
                   ? "bg-blue-50 text-blue-600 font-medium"
                   : "text-[#636363]"
@@ -159,7 +159,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
               <button
                 key={category}
                 onClick={() => handleCategorySelect(category)}
-                className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors text-sm ${
+                className={`block w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors md:text-sm text-xs ${
                   selectedCategory === category
                     ? "bg-blue-50 text-blue-600 font-medium"
                     : "text-[#636363]"

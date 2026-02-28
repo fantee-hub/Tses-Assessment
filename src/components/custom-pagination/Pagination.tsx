@@ -71,7 +71,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <div className="relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="flex items-center gap-2 border border-[#E8E8E8] rounded-full px-5 py-2.5 bg-white cursor-pointer text-[#636363] hover:border-gray-300 transition-colors"
+          className="flex items-center gap-2 border md:text-base text-sm border-[#E8E8E8] rounded-full md:px-5 md:py-2.5 py-1.5 px-3 bg-white cursor-pointer text-[#636363] hover:border-gray-300 transition-colors"
         >
           <span>Show {itemsPerPage}/page</span>
           <span

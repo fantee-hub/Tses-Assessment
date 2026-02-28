@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import Pagination from "@/src/components/custom-pagination/Pagination";
 import { Learner, SortField, TableSort } from "@/src/utils/types";
 import { MessageTextIcon } from "@/src/components/custom-icons";
+import { LearnersCardList } from "./LearnersCardList";
 
 interface LearnersTableProps {
   learners: Learner[];
@@ -97,7 +98,13 @@ export const LearnersTable = ({
 
   return (
     <div className="bg-white rounded-xl border border-gray-100">
-      <table className="w-full text-sm">
+      <div className="md:hidden">
+        <LearnersCardList
+          learners={paginatedLearners}
+          onMessageLearner={onMessageLearner}
+        />
+      </div>
+      <table className="hidden md:table w-full text-sm">
         <thead>
           <tr className="border-b border-gray-100">
             {columns.map((col) => (

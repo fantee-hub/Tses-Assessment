@@ -1,9 +1,8 @@
 import CourseManagement from "@/src/screens/Courses/sections/CourseManagement";
-import React from "react";
 
 const Dashboard = () => {
   return (
-    <div className="flex-1 md:p-8 p-6  md:w-[calc(100vw-210px)] w-full text-black bg-[#f8f8f8]">
+    <div className="flex-1 md:p-8 p-4  md:w-[calc(100vw-210px)] w-full text-black bg-[#f8f8f8]">
       <CourseManagement />
     </div>
   );

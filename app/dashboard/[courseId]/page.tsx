@@ -55,7 +55,7 @@ const CourseDetailPage = () => {
 
   if (!course) {
     return (
-      <div className="flex-1 w-full bg-gray-50/50 p-6 flex items-center justify-center">
+      <div className="flex-1 w-full bg-gray-50/50 md:p-6 p-4 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 text-lg font-medium">Course not found</p>
           <p className="text-gray-400 text-sm mt-1">
@@ -68,7 +68,7 @@ const CourseDetailPage = () => {
   }
 
   return (
-    <div className="flex-1 w-full bg-gray-50/50 p-6">
+    <div className="flex-1 w-full bg-gray-50/50 md:p-6 p-4">
       <CourseDetailHeader
         title={course.title}
         tag={course.tag}

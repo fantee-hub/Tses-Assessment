@@ -31,8 +31,8 @@ const StatItem = ({ label, value, icon, iconBg }: StatItemProps) => (
 
 export const CourseStatsRow = ({ stats }: CourseStatsRowProps) => {
   return (
-    <div className="flex gap-5">
-      <div className=" gap-4 mb-6 bg-white p-1 rounded-lg w-full border border-gray-100">
+    <div className="flex md:gap-5 md:flex-row flex-col gap-2">
+      <div className=" gap-4 md:mb-6 bg-white p-1 rounded-lg w-full border border-gray-100">
         <StatItem
           label="Total Applicants"
           value={stats.totalApplicants}
