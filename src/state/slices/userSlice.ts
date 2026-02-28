@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 interface User {
   id: string;
   name: string;
@@ -11,12 +12,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: {
-    id: "1",
-    name: "Madison Greg",
-    email: "madison.reertr@soludesk.com",
-    isAuthenticated: true,
-  },
+  user: null,
 };
 
 export const userSlice = createSlice({
@@ -26,11 +22,25 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
+
+    login: (state, action: PayloadAction<Omit<User, "isAuthenticated">>) => {
+      state.user = { ...action.payload, isAuthenticated: true };
+    },
+
+    logout: (state) => {
+      state.user = null;
+    },
+
     clearUser: (state) => {
       state.user = null;
     },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, login, logout, clearUser } = userSlice.actions;
+
+export const selectUser = (state: { user: UserState }) => state.user.user;
+export const selectIsAuthenticated = (state: { user: UserState }) =>
+  state.user.user?.isAuthenticated ?? false;
+
 export default userSlice.reducer;

@@ -13,6 +13,14 @@ export interface Course {
   instructor?: string;
 }
 
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+  role?: string;
+}
+
 export interface Learner {
   id: string;
   name: string;
@@ -23,8 +31,23 @@ export interface Learner {
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "/api",
+    prepareHeaders: (headers) => {
+      const token =
+        typeof window !== "undefined" ? localStorage.getItem("token") : null;
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ["Profile", "Course"],
   endpoints: (builder) => ({
+    getProfile: builder.query<UserProfile, void>({
+      query: () => "users/profile",
+      providesTags: ["Profile"],
+    }),
     getCourses: builder.query<Course[], void>({
       query: () => "courses",
     }),

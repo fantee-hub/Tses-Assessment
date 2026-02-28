@@ -1,36 +1,219 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TSES - Learning Management System
 
-## Getting Started
+A modern, full-featured Learning Management System built with Next.js, Redux Toolkit, and TypeScript.
 
-First, run the development server:
+## 🚀 Deployment
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Live Demo:** https://www.tsesltd.vercel.app
+
+## 📋 Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Next.js 14+** - React framework with App Router
+- **React 18** - UI library
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **Lucide React** - Icon library
+
+### State Management & Data Fetching
+
+- **Redux Toolkit** - State management
+- **RTK Query** - Data fetching and caching
+
+### Development Tools
+
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **TypeScript Config** - Type checking configuration
+
+## ✨ Features
+
+- 📚 Course management and browsing
+- 🔍 Advanced search and filtering
+- 📊 Interactive dashboard
+- 📄 Pagination for large datasets
+- 🎨 Modern, responsive UI design
+- 🌐 API integration with Redux Toolkit Query
+- 📱 Mobile-first responsive design
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+- **Node.js** (v18 or higher)
+- **npm** or **yarn** or **pnpm**
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <your-repo-url>
+   cd tses
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the root directory:
+
+   ```env
+   NEXT_PUBLIC_API_BASE_URL=your_api_url_here
+   # Add other environment variables as needed
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+5. **Open your browser**
+
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Folder Structure
+
+```
+tses/
+├── .next/                      # Next.js build output (auto-generated)
+├── app/                        # Next.js App Router
+│   ├── dashboard/             # Dashboard pages and layouts
+│   ├── favicon.ico            # App favicon
+│   ├── globals.css            # Global styles
+│   ├── layout.tsx             # Root layout component
+│   └── page.tsx               # Home page
+│
+├── node_modules/              # Project dependencies
+│
+├── public/                    # Static assets
+│   └── [images, fonts, etc.]
+│
+├── src/                       # Source code
+│   ├── components/            # Reusable React components
+│   │   ├── custom-icons/     # Custom icon components
+│   │   ├── custom-pagination/ # Pagination component
+│   │   └── [other components]
+│   │
+│   ├── data/                  # Mock data and constants
+│   │
+│   ├── lib/                   # Utility functions and helpers
+│   │
+│   ├── screens/               # Page-level components/screens
+│   │   └── dashboard/        # Dashboard screen components
+│   │
+│   ├── state/                 # Redux state management
+│   │   └── api/              # RTK Query API slices
+│   │
+│   └── utils/                 # Utility functions
+│
+├── .eslintrc.json            # ESLint configuration
+├── .gitignore                # Git ignore rules
+├── next.config.ts            # Next.js configuration
+├── next-env.d.ts             # Next.js TypeScript declarations
+├── package.json              # Project dependencies and scripts
+├── package-lock.json         # Locked dependency versions
+├── postcss.config.mjs        # PostCSS configuration
+├── README.md                 # Project documentation (this file)
+├── tailwind.config.ts        # Tailwind CSS configuration
+└── tsconfig.json             # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Key Directories Explained
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### `/app`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Next.js 14 App Router directory containing:
 
-## Learn More
+- Route definitions
+- Layout components
+- Page components
+- Global styles
 
-To learn more about Next.js, take a look at the following resources:
+#### `/src/components`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Reusable UI components:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `custom-icons/` - Custom SVG icon components
+- `custom-pagination/` - Pagination component with filtering
+- Other shared components
 
-## Deploy on Vercel
+#### `/src/state`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Redux Toolkit state management:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `api/` - RTK Query API endpoints and slices
+- Store configuration
+- Type definitions
+
+#### `/src/screens`
+
+Page-level components organized by feature:
+
+- `dashboard/` - Dashboard-related screens and components
+
+#### `/src/lib` & `/src/utils`
+
+Helper functions, utilities, and shared logic
+
+## 🔧 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# API Configuration
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
+
+# Add other environment variables as needed
+```
+
+## 📜 Scripts
+
+```bash
+# Development
+npm run dev          # Start development server
+
+# Production
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Code Quality
+npm run lint         # Run ESLint
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Vercel for hosting and deployment tools
+- All contributors and supporters of this project

@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { MessageIcon, NotificationIcon, SearchIcon } from "../../custom-icons";
 import { ChevronDownIcon } from "lucide-react";
+import { useSelector } from "react-redux";
+import { selectUser } from "@/src/state/slices/userSlice";
 
 interface HeaderProps {
   isSideBarOpen: boolean;
@@ -12,6 +14,10 @@ export default function Header({
   isSideBarOpen,
   setIsSidebarOpen,
 }: HeaderProps) {
+  const user = useSelector(selectUser);
+
+  const displayName = user?.name ?? "User";
+  const displayEmail = user?.email ?? "";
   return (
     <header className="bg-white py-4 h-20 flex items-center  fixed top-0 w-full z-20 right-0 left-0 border-b border-[#f0f0f0] px-4 md:px-0">
       <div className="flex items-center justify-between gap-5 w-full">
@@ -98,10 +104,10 @@ export default function Header({
 
               <div className="flex flex-col items-start">
                 <div className="font-medium whitespace-nowrap  text-[#202020] md:text-base text-sm">
-                  Madison Greg
+                  {displayName}
                 </div>
                 <div className="text-[#636363] truncate w-35 md:text-base text-sm ">
-                  Madison.reertr@gmail.com
+                  {displayEmail}
                 </div>
               </div>
             </button>
