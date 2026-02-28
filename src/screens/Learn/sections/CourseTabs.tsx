@@ -120,7 +120,7 @@ export default function CourseTabs({
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border-[1.5px] border-[#D9D9D9]">
+      <div className="bg-white rounded-lg border-[1.5px] border-[#D9D9D9] p-5">
         {activeTab === "review" ? (
           <div className="text-center py-12 text-gray-500">
             Feedback & reviews coming soon...
