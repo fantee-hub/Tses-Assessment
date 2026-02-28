@@ -4,7 +4,7 @@ A modern, full-featured Learning Management System built with Next.js, Redux Too
 
 ## 🚀 Deployment
 
-**Live Demo:** https://www.tsesltd.vercel.app
+**Live Demo:** [https://www.tsesltd.vercel.app](https://tsesltd.vercel.app/)
 
 ## 📋 Table of Contents
 
