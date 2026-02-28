@@ -37,7 +37,7 @@ export default function Sidebar({
     <>
       {!isSideBarOpen && (
         <div
-          className="fixed top-0 left-0 right-0 bottom-0 bg-black/0.5 z-20 opacity-0  transition ease-in-out duration-300 animate-bounce md:hidden block"
+          className="fixed inset-0 bg-black/50 z-5 transition-opacity duration-300 md:hidden"
           onClick={handleOverlayClick}
         />
       )}
